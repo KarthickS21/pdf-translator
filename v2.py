@@ -14,7 +14,7 @@ ctx = ssl.create_default_context(cadata=cert_data)
 custom_client = httpx.Client(verify=ctx)
 
 # Init LLM via AzureChatOpenAI
-def get_llm_model(model_name="gpt-35-turbo", temperature=0.2):
+def get_llm_model(model_name="gpt-3.5-turbo", temperature=0.2):
     return AzureChatOpenAI(
         azure_endpoint=os.environ.get("AZURE_OPENAI_ENDPOINT"),  # e.g., https://example.openai.azure.com/
         api_key=os.environ.get("AZURE_OPENAI_KEY"),
