@@ -8,7 +8,8 @@ import httpx
 from langchain_openai import AzureChatOpenAI
 
 # Load custom SSL certificate and build HTTP client
-cert_data = os.environ.get("HUMANA_CERT")  # path to PEM or cert content
+# cert_data = os.environ.get("HUMANA_CERT")  # path to PEM or cert content
+cert_data = open("cert.pem").read()
 ctx = ssl.create_default_context(cadata=cert_data)
 custom_client = httpx.Client(verify=ctx)
 
