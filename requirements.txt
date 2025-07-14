@@ -3,3 +3,7 @@ httpx
 pymupdf
 openai
 pillow
+easyocr
+torch 
+torchvision
+numpy
