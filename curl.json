@@ -1,0 +1,19 @@
+curl --location 'https://dhp-ai-agent-api-plat-dev.npii-aks.dhp-east2us-npe.humana.com/api/v1/token' \
+--header 'Content-Type: application/json' \
+--data '{
+    "clientId": "YOUR_CLIENT_ID",
+    "clientSecret": "YOUR_CLIENT_SECRET"
+  }'
+
+
+
+curl --location 'https://dhp-ai-agent-api-plat-dev.npii-aks.dhp-east2us-npe.humana.com/api/v1/agents/agent/stream' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer xxxxxxx' \
+--data '{
+    "messages": [
+      { "role": "user", "content": "Translate this to Spanish: Hello" }
+    ],
+    "model": "gpt-4.0",
+    "temperature": 0.3
+  }'
