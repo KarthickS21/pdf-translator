@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: file-processor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: file-processor
+  template:
+    metadata:
+      labels:
+        app: file-processor
+    spec:
+      containers:
+      - name: file-processor
+        image: testfileprocessoracr.azurecr.io/file-processor:v1
+        env:
+        - name: SEARCH_ENDPOINT
+          value: "https://testsearchai121.search.windows.net"
+        - name: SEARCH_KEY
+          valueFrom:
+            secretKeyRef:
+              name: file-processor-secrets
+              key: SEARCH_KEY
+        - name: INDEX_NAME
+          value: "testreports"
+        - name: STORAGE_CONN_STRING
+          valueFrom:
+            secretKeyRef:
+              name: file-processor-secrets
+              key: STORAGE_CONN_STRING
+        - name: FILESHARE_NAME
+          value: "file-search"
+        - name: POLL_INTERVAL
+          value: "60"  # seconds
