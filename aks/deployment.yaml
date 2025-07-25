@@ -34,3 +34,5 @@ spec:
           value: "file-search"
         - name: POLL_INTERVAL
           value: "60"  # seconds
+        - name: STORAGE_ACCOUNT
+          value: "testfileprocessor"
