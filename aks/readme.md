@@ -43,3 +43,16 @@ kubectl rollout status deployment/file-processor
 # Check pods and logs
 kubectl get pods
 kubectl logs -f $(kubectl get pods -l app=file-processor -o jsonpath="{.items[0].metadata.name}")
+
+
+** asign role
+# Get AKS managed identity (MSI) object ID
+az aks show --resource-group fileproc-rg --name fileprocessoraks \
+  --query identityProfile.kubeletidentity.objectId -o tsv
+
+output:5fa2c350-4312-4c5d-8e6c-03945c54fb29
+
+az role assignment create \
+  --assignee 5fa2c350-4312-4c5d-8e6c-03945c54fb29 \
+  --role "Storage File Data SMB Share Contributor" \
+  --scope $(az storage account show --name teststorage12340909 --resource-group RG1 --query id -o tsv)
