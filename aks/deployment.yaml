@@ -19,17 +19,9 @@ spec:
         - name: SEARCH_ENDPOINT
           value: "https://testsearchai121.search.windows.net"
         - name: SEARCH_KEY
-          valueFrom:
-            secretKeyRef:
-              name: file-processor-secrets
-              key: SEARCH_KEY
+          value: xxxxxxx
         - name: INDEX_NAME
           value: "testreports"
-        - name: STORAGE_CONN_STRING
-          valueFrom:
-            secretKeyRef:
-              name: file-processor-secrets
-              key: STORAGE_CONN_STRING
         - name: FILESHARE_NAME
           value: "file-search"
         - name: POLL_INTERVAL
